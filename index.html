@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+    <title>Emoji Particles</title>
+  </head>
+  <body>
+    <style>
+      html,
+      body {
+        background: #111;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+        width: 90vw;
+        overflow: hidden;
+      }
+
+      button {
+        font-size: 70px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        outline: 0;
+        cursor: pointer;
+      }
+
+      .emoji-splash {
+        position: absolute;
+        font-size: 70px;
+        user-select: none;
+        -webkit-user-select: none;
+        pointer-events: none;
+      }
+    </style>
+    <button>👾</button>
+    <script>
+      const randomAnimationHash = function () {
+        return {
+          duration: anime.random(2000, 2750),
+          translateX: `${anime.random(-300, 300)}px`,
+          translateY: `${anime.random(-300, 300)}px`,
+          rotate: anime.random(50, 400),
+          delay: anime.random(0, 50),
+        };
+      };
+
+      const appendEmoji = function (emoji, node) {
+        emoji.forEach(function (e) {
+          node.appendChild(e);
+        });
+      };
+
+      const animateEmoji = function (emoji) {
+        emoji.forEach(function (e) {
+          anime({
+            targets: e,
+            opacity: 0,
+            complete() {
+              e.remove();
+            },
+            ...randomAnimationHash(),
+          });
+        });
+      };
+
+      const generateEmoji = function (count = 5, text, x, y) {
+        return Array(count)
+          .fill(0)
+          .map(function () {
+            return generateEmojiEl(text, x, y);
+          });
+      };
+
+      const generateEmojiEl = function (text, x, y) {
+        const emoji = document.createElement("span");
+        emoji.innerText = text;
+        emoji.classList.add("emoji-splash");
+        emoji.style.top = y + "px";
+        emoji.style.left = x + "px";
+        return emoji;
+      };
+
+      const explode = function (event) {
+        const emoji = generateEmoji(
+          7,
+          event.target.innerText,
+          event.clientX - 3,
+          event.clientY - 3
+        );
+        appendEmoji(emoji, document.body);
+        animateEmoji(emoji);
+      };
+
+      document.querySelector("button").addEventListener("click", explode);
+    </script>
+  </body>
+</html>

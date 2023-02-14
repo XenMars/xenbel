@@ -1,76 +1,64 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components'
-import ReactLogo from './img/ReactLogo.svg'
-import JavaScriptLogo from './img/JavaScriptLogo.svg'
-import PHPLogo from './img/PHPLogo.svg'
-import JQueryLogo from './img/JQueryLogo.svg'
-import HTMLLogo from './img/HTMLLogo.svg'
-import SASSLogo from './img/SASSLogo.svg'
-import WPLogo from './img/WPLogo.svg'
-import StyledComponentsLogo from './img/StyledComponentsLogo.svg'
-import MySQLLogo from './img/MySQLLogo.svg'
+import { SimpleLink } from '../../GlobalStyles.style';
 
-const Pulse = () => {
-    return (
-        <TechTable>
-            <TechTableFigure>
-                <TechTableImgOpacity src={ReactLogo} alt='React.js' width="800" height="600"/>
-            </TechTableFigure>
-            <TechTableFigure>
-                <TechTableImg src={JavaScriptLogo} alt='JavaScript' width="800" height="600"/>
-            </TechTableFigure>
-            <TechTableFigure>
-                <TechTableImgOpacity src={PHPLogo} alt='PHP' width="800" height="600"/>
-            </TechTableFigure>
-            <TechTableFigure>
-                <TechTableImg src={JQueryLogo} alt='JQuery' width="800" height="600"/>
-            </TechTableFigure>
-            <TechTableFigure>
-                <TechTableImgOpacity src={HTMLLogo} alt='HTML' width="800" height="600"/>
-            </TechTableFigure>
-            <TechTableFigure>
-                <TechTableImg src={SASSLogo} alt='SASS' width="800" height="600"/>
-            </TechTableFigure>
-            <TechTableFigure>
-                <TechTableImgOpacity src={WPLogo} alt='WordPress' width="800" height="600"/>
-            </TechTableFigure>
-            <TechTableFigure>
-                <TechTableImg src={StyledComponentsLogo} alt='StyledComponents' width="800" height="600"/>
-            </TechTableFigure>
-            <TechTableFigure>
-                <TechTableImgOpacity src={MySQLLogo} alt='MySQL' width="800" height="600"/>
-            </TechTableFigure>
-        </TechTable>
-    )
-}
 
 const PortfolioItem = () => {
     return (
+        <CardWrapper>
         <Card>
             <CardFront>
                 <CardContentFront>
-                    <p>Наведи</p>
+                    <p>Like System plugin for WordPress</p>
                 </CardContentFront>
             </CardFront>
             <CardBack>
                 <CardContent>
-                    <p>ХОБА</p>
+                    <p>Short description for a plugin description for a plugin short for a plugin</p>
+                    <SimpleLink href='/'>Get sourse code</SimpleLink>
                 </CardContent>
             </CardBack>
         </Card>
-        
+        <Card>
+            <CardFront>
+                <CardContentFront>
+                    <p>Display count orders notes Woocomerce plugin</p>
+                </CardContentFront>
+            </CardFront>
+            <CardBack>
+                <CardContent>
+                    <p>Short description for a plugin description for a plugin short for a plugin</p>
+                    <SimpleLink href='/'>Get sourse code</SimpleLink>
+                </CardContent>
+            </CardBack>
+        </Card>
+        <Card>
+            <CardFront>
+                <CardContentFront>
+                    <p>Styled 3d cards with JS and SASS</p>
+                </CardContentFront>
+            </CardFront>
+            <CardBack>
+                <CardContent>
+                    <p>Short description for a plugin description for a plugin short for a plugin</p>
+                    <SimpleLink href='/'>Get sourse code</SimpleLink>
+                </CardContent>
+            </CardBack>
+        </Card>
+        </CardWrapper>
     )
 }
 
-export default Pulse  
+
 export { PortfolioItem }
 
-const pulseAnimation = keyframes`
- 0% { opacity: 0.3; filter: grayscale(1); }
- 50% { opacity: 1; filter: grayscale(0); }
- 100% { opacity: 0.3; filter: grayscale(1); }
+export const CardWrapper = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-content: center;
+    gap: 20px;
+    padding: 50px 0;
 `
-
 
 export const CardFront = styled.div`
     width: 300px;
@@ -81,13 +69,14 @@ export const CardFront = styled.div`
     justify-content: center;
     align-items: center;
     z-index: 1;
-    background: #9747FF;
+    background: #333333;
     transition: .7s;
     transform: translateY(100px);
+    border-radius: 5px;
 `
 export const CardBack = styled.div`
     width: 300px;
-    height: 200px;
+    height: 190px;
     transition: 0.5s;
     position: relative;
     display: flex;
@@ -96,7 +85,9 @@ export const CardBack = styled.div`
     padding: 20px;
     box-sizing: border-box;
     transition: .8s;
-    transform: translateY(-100px);
+    transform: translateY(-95px);
+    border-radius: 5px;
+    background: #fff;
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     &:after {
         content: "";
@@ -107,22 +98,28 @@ export const CardBack = styled.div`
         left: 50%;
         left: 50%;
         transform: translateX(-50%);
-        background: #9747FF;
+        background: #10C800;
     }
 `
 export const Card = styled.div`
-    margin: 100px 0;
+    height: 400px;
+    margin: auto;
     &:hover ${CardFront} {
         transform: translateY(0);
+        border-radius: 5px 5px 0 0;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
     &:hover ${CardBack} {
         transform: translateY(0);
+        border-radius: 0 0 5px 5px;
     }
 `
 
 export const CardContentFront = styled.div`
-    background: #9747FF;
     color: #fff;
+    font-weight: 600;
+    padding: 20px;
+    text-align: center;
 `
 
 export const CardContent = styled.div`
@@ -147,6 +144,12 @@ export const TechTableFigure = styled.figure`
     overflow: hidden;
 `
 
+const pulseAnimation = keyframes`
+ 0% { opacity: 0.3; filter: grayscale(1); }
+ 50% { opacity: 1; filter: grayscale(0); }
+ 100% { opacity: 0.3; filter: grayscale(1); }
+`
+
 export const TechTableImgOpacity = styled.img`
     animation: ${pulseAnimation} 4s ease infinite reverse;
     animation-delay: 1.5s;
@@ -159,3 +162,4 @@ export const TechTableImg = styled.img`
     max-width: 100%;
     opacity: 1;
 `
+

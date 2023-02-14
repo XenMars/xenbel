@@ -8,15 +8,43 @@ export const GlobalStyles = createGlobalStyle`
         margin: auto;
         padding: 0 10px;
         color: #111417;
+        font-family: 'Work Sans', sans-serif;
     }
 
     .type-wrap {
         font-size: 68px;
         font-weight: 700;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 900;
     }
 
     
 `
+
+export const SimpleLink = styled.a`
+    color: #333333;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    transition: color .4s;
+    &::before {
+        content: "";
+        width: 0;
+        height: 3px;
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        border-radius: 3px;
+        background: #10C800;
+        transition: width .4s;
+    }
+    &:hover {
+        color: #10C800;
+    }
+    &:hover:before {
+        width: 100%;
+    }
+` 
 
 export const TitleDescriotion = styled.p`
     font-size: 18px;
@@ -96,12 +124,16 @@ export const Title = styled.h1`
     font-weight: 700;
     text-align: right;
     margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
 `
 
 export const SubTitle = styled.h2`
     font-size: 50px;
     font-weight: 700;
     margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
 `
 
 export const SingleColumnBlock = styled.div`
