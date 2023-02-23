@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     body{
@@ -11,14 +11,43 @@ export const GlobalStyles = createGlobalStyle`
         font-family: 'Work Sans', sans-serif;
     }
 
-    .type-wrap {
-        font-size: 68px;
-        font-weight: 700;
-        font-family: 'Raleway', sans-serif;
-        font-weight: 900;
+    .type-wrapPC {
+        font-family: 'DotGothic16', sans-serif;
+        color: #10C800;
+        position: absolute;
+        top: 157px;
+        left: 150px;
+        font-size: 35px;
     }
 
     
+`
+
+const ButtonAnimation = keyframes`
+to {background-position: 200%;}
+`
+
+export const Button = styled.button`
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #10C800;
+    transition: .4s;
+    border: solid 2px rgba(16, 200, 0, 1);
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: linear-gradient(135deg, transparent 65%, rgba(16, 200, 0, 0.3) 65%, transparent 70%);
+    background-size: 2000%;
+    background-position: 0%;
+    transition: box-shadow 350ms, color 400ms;
+    animation: ${ButtonAnimation} 10s linear infinite;
+    &:hover {
+        box-shadow:
+        inset -5em 0em 0 rgba(16, 200, 0, 1),
+        inset 5em 0em 0 rgba(16, 200, 0, 1);
+        color: #fff;
+    }
 `
 
 export const SimpleLink = styled.a`
@@ -46,7 +75,7 @@ export const SimpleLink = styled.a`
     }
 ` 
 
-export const TitleDescriotion = styled.p`
+export const TitleDescription = styled.p`
     font-size: 18px;
     font-weight: 500;
     opacity: 0.8;
@@ -65,7 +94,7 @@ export const StyledLink = styled.a`
         content: "";
         width: 100%;
         height: 3px;
-        background: #9747FF;
+        background: #10C800;
         position: absolute;
         bottom: -3px;
         right: 0;
@@ -75,7 +104,7 @@ export const StyledLink = styled.a`
     }
     &:hover {
         opacity: 1;
-        color: #9747FF;
+        color: #10C800;
     }
 
     &:hover:after {
@@ -84,45 +113,40 @@ export const StyledLink = styled.a`
     }
 `
 
-export const Button = styled.button`
-
-`
-
-export const FlexWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 10px;
-`
-
-export const TwoColumnsBlock = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 200px;
-    gap: 5vw;
-`
-
-export const ColumnLeft = styled.div`
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+export const LeftAlignSection = styled.section`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin: 100px 0;
     text-align: left;
 `
 
-export const ColumnRight = styled.div`
-    width: 50%;
+export const RightAlignSection = styled.section`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin: 100px 0;
+    text-align: right;
+`
+
+export const SingleSection = styled.section`
+    text-align: left;
+    margin: 100px 0;
+`
+
+export const HalfWidth = styled.div`
+    justify-self: center;
+`
+
+export const HalfWidthInner = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: right;
+    justify-content: center;
 `
 
 export const Title = styled.h1`
     font-size: 50px;
     font-weight: 700;
-    text-align: right;
     margin: 0;
     font-family: 'Raleway', sans-serif;
     font-weight: 900;
@@ -136,8 +160,9 @@ export const SubTitle = styled.h2`
     font-weight: 900;
 `
 
-export const SingleColumnBlock = styled.div`
-    text-align: left;
+export const Name = styled.p`
+    font-size: 20px;
+    font-weight: 600;
+    opacity: 0.7;
+    margin: 0;
 `
-
-

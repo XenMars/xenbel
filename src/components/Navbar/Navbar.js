@@ -1,5 +1,5 @@
 import React from "react";
-import logo from './logo.svg'
+import logo from './Logo.webp'
 import { Header, Nav, NavLink, NavWrapper, NavLinkWrapper, Logo } from "./Navbar.elements";
 
 export const Navbar = () => {
